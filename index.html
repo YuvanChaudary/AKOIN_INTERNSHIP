@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institute of Digital Risk (IDR)</title>
+  <meta name="description" content="Institute of Digital Risk - training and deploying digital risk practitioners through industry-led programs, real-world projects, and regulated environment experience." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand: #F97316;
+      --brand-dark: #c75a12;
+      --bg: #0B0F17;
+      --surface: #131A28;
+      --surface-2: #1B2537;
+      --text: #F8FAFC;
+      --muted: rgba(248, 250, 252, 0.7);
+      --border: rgba(248, 250, 252, 0.16);
+      --radius: 14px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+      color: var(--text);
+      background: radial-gradient(circle at top, rgba(249, 115, 22, 0.18), transparent 60%),
+                  radial-gradient(circle at 80% 20%, rgba(248, 250, 252, 0.12), transparent 55%),
+                  var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 15, 23, 0.92);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .logo svg {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 0.4rem;
+      border-radius: 999px;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(249, 115, 22, 0.16);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 115, 22, 0.55);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(255, 176, 66, 0.8));
+      color: var(--bg);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      text-decoration: none;
+    }
+
+    .cta-primary:hover,
+    .cta-primary:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(249, 115, 22, 0.35);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: grid;
+      place-items: center;
+      padding: 4rem 0 5rem;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.75rem, 4.5vw, 3.75rem);
+      letter-spacing: -0.02em;
+      margin: 0;
+      max-width: 810px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    section + section {
+      border-top: 1px solid rgba(248, 250, 252, 0.08);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .section-header h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.1rem;
+      margin: 0;
+    }
+
+    .section-header p {
+      max-width: 700px;
+      margin: 0.8rem auto 0;
+      color: var(--muted);
+    }
+
+    .about p {
+      max-width: 780px;
+      margin: 1.25rem auto 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(248, 250, 252, 0.08);
+      border-radius: var(--radius);
+      padding: 1.7rem 1.6rem;
+      box-shadow: var(--shadow);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(249, 115, 22, 0.35);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .card p {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .pipeline {
+      margin-top: 2rem;
+      text-align: center;
+      font-weight: 600;
+      color: rgba(248, 250, 252, 0.7);
+      letter-spacing: 0.05em;
+    }
+
+    .pipeline span {
+      padding: 0 0.5rem;
+      position: relative;
+    }
+
+    .pipeline span + span::before {
+      content: "→";
+      position: absolute;
+      left: -0.6rem;
+      color: var(--brand);
+    }
+
+    .community-list {
+      display: grid;
+      gap: 1.25rem;
+      max-width: 880px;
+      margin: 2rem auto 0;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .community-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(248, 250, 252, 0.07);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .community-card h4 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      color: rgba(249, 115, 22, 0.95);
+    }
+
+    .community-card p {
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-form {
+      max-width: 680px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(248, 250, 252, 0.08);
+      border-radius: var(--radius);
+      padding: 2.25rem 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      display: grid;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(248, 250, 252, 0.12);
+      border-radius: 0.85rem;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(249, 115, 22, 0.6);
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .form-submit {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(248, 250, 252, 0.14);
+      color: var(--text);
+      padding: 0.9rem 1.3rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
+    }
+
+    .button-secondary:hover,
+    .button-secondary:focus-visible {
+      background: rgba(249, 115, 22, 0.14);
+      border-color: rgba(249, 115, 22, 0.4);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      padding: 2.75rem 0 3.5rem;
+      border-top: 1px solid rgba(248, 250, 252, 0.08);
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.75rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .footer-brand span {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(248, 250, 252, 0.7);
+      font-weight: 500;
+      transition: color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .footer-tagline {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: rgba(248, 250, 252, 0.65);
+      max-width: 360px;
+    }
+
+    .note {
+      margin: 0 auto 3rem;
+      padding: 1.2rem 1.4rem;
+      max-width: var(--max);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(248, 250, 252, 0.08);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      color: rgba(248, 250, 252, 0.82);
+    }
+
+    @media (max-width: 880px) {
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+
+    @media (max-width: 660px) {
+      .nav-inner {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        gap: 0.45rem;
+        padding: 1rem 0;
+        display: none;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: inline-flex;
+        border: 1px solid rgba(248, 250, 252, 0.18);
+        border-radius: 999px;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.06);
+        cursor: pointer;
+        transition: background 180ms ease, transform 180ms ease;
+      }
+
+      .hamburger:hover,
+      .hamburger:focus-visible {
+        background: rgba(249, 115, 22, 0.14);
+        transform: translateY(-1px);
+      }
+
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        position: relative;
+      }
+
+      .hamburger span::before,
+      .hamburger span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: transform 180ms ease;
+      }
+
+      .hamburger span::before {
+        top: -7px;
+      }
+
+      .hamburger span::after {
+        top: 7px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a href="#hero" class="logo" aria-label="Institute of Digital Risk">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="gradLogoA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#F97316" />
+            <stop offset="100%" stop-color="#FFB042" />
+          </linearGradient>
+        </defs>
+        <!-- Cube faces -->
+        <path d="M30 20 L90 20 L120 50 L60 50 Z" fill="url(#gradLogoA)" />
+        <path d="M30 20 L60 50 L60 110 L30 80 Z" fill="#0B0F17" />
+        <path d="M90 20 L120 50 L120 110 L90 80 Z" fill="#F97316" />
+        <!-- IDR monogram -->
+        <rect x="34" y="40" width="12" height="40" rx="2" fill="url(#gradLogoA)" />
+        <path d="M60 50 h30 a10 10 0 0 1 0 20 h-30z" fill="url(#gradLogoA)" />
+        <path d="M60 80 h30 a10 10 0 0 1 0 20 h-30z" fill="url(#gradLogoA)" />
+        <path d="M90 80 l18 0 l0 10 l-18 0 l0 15 l-10 0 l0 -45 l28 0 l0 10 l-18 0z" fill="url(#gradLogoA)" />
+      </svg>
+        <span>Institute of Digital Risk</span>
+      </a>
+
+      <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+      </button>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Programs</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div>
+        <h1>Advancing the Future of Digital Risk</h1>
+        <p>IDR trains and deploys digital risk practitioners, combining academic collaboration and industry practice across regulated, high‑consequence environments.</p>
+        <a class="cta-primary" href="#services">Explore Programs</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-header">
+        <h2>About the Institute of Digital Risk</h2>
+        <p>The Institute of Digital Risk is an industry-led training and deployment institute for digital, cyber, and technology risk roles in regulated, high‑consequence environments. We partner with UK universities to blend academic rigour and research with practical, industry-grade project experience.</p>
+      </div>
+      <div class="about">
+        <p>Through collaborative projects, live placements, and a cohort-based model, IDR prepares practitioners to deliver impact quickly in financial services, critical infrastructure, and other regulated sectors.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-header">
+        <h2>Service Pillars</h2>
+        <p>Three pillars that underpin every cohort: practical training, market-facing innovation, and bespoke advisory.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Academy</h3>
+          <p>Structured learning pathways, accredited certifications, and live case studies designed to upskill professionals quickly and sustainably.</p>
+        </article>
+        <article class="card">
+          <h3>Innovation &amp; Incubation</h3>
+          <p>Hands-on projects with enterprise partners, a sandbox for risk-tech pilots, and mentoring to accelerate ideas into deployable solutions.</p>
+        </article>
+        <article class="card">
+          <h3>Advisory Services</h3>
+          <p>Senior practitioner-led guidance for governance, control design, and risk strategy in highly regulated sectors.</p>
+        </article>
+      </div>
+
+      <div class="pipeline" aria-label="Program pipeline">
+        <span>Train</span>
+        <span>Hire</span>
+        <span>Innovate</span>
+        <span>Deploy</span>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="section-header">
+        <h2>Our Community</h2>
+        <p>IDR serves ambitious learners and practitioners who want to shape how organisations manage digital risk.</p>
+      </div>
+      <div class="community-list">
+        <div class="community-card">
+          <h4>Students &amp; Graduates</h4>
+          <p>Fast-track your career with credentialed training and live placements in regulated organisations.</p>
+        </div>
+        <div class="community-card">
+          <h4>Early-Career Professionals</h4>
+          <p>Transition into digital risk roles with hands-on mentorship, practical labs, and industry networking.</p>
+        </div>
+        <div class="community-card">
+          <h4>Financial Services &amp; Infrastructure Professionals</h4>
+          <p>Access peer-led communities, frameworks, and toolkits tailored for highly regulated sectors.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header">
+        <h2>Register Interest</h2>
+        <p>Tell us where you are on your journey and we’ll share upcoming cohorts, events, and opportunities.</p>
+      </div>
+
+      <form class="contact-form" onsubmit="handleContact(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required placeholder="Your name" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us what you’re looking for…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="cta-primary" type="submit">Submit Interest</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="gradLogoB" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#F97316" />
+                <stop offset="100%" stop-color="#FFB042" />
+              </linearGradient>
+            </defs>
+            <!-- Cube faces -->
+            <path d="M30 20 L90 20 L120 50 L60 50 Z" fill="url(#gradLogoB)" />
+            <path d="M30 20 L60 50 L60 110 L30 80 Z" fill="#0B0F17" />
+            <path d="M90 20 L120 50 L120 110 L90 80 Z" fill="#F97316" />
+            <!-- IDR monogram -->
+            <rect x="34" y="40" width="12" height="40" rx="2" fill="url(#gradLogoB)" />
+            <path d="M60 50 h30 a10 10 0 0 1 0 20 h-30z" fill="url(#gradLogoB)" />
+            <path d="M60 80 h30 a10 10 0 0 1 0 20 h-30z" fill="url(#gradLogoB)" />
+            <path d="M90 80 l18 0 l0 10 l-18 0 l0 15 l-10 0 l0 -45 l28 0 l0 10 l-18 0z" fill="url(#gradLogoB)" />
+          </svg>
+          <span>Institute of Digital Risk</span>
+        </div>
+        <p class="footer-tagline">Equipping professionals to manage digital risk with confidence, creativity, and conviction.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    function toggleMenu() {
+      const isOpen = navLinks.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", isOpen);
+    }
+
+    hamburger.addEventListener("click", toggleMenu);
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (navLinks.classList.contains("open")) {
+          toggleMenu();
+        }
+      });
+    });
+
+    function handleContact(event) {
+      event.preventDefault();
+      const name = event.target.name.value.trim();
+      const message = event.target.message.value.trim();
+      alert(
+        "Thanks " +
+          (name || "there") +
+          "! We'll be in touch soon to share more about our upcoming cohorts."
+      );
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
